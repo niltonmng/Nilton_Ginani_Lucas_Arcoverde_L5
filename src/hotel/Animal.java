@@ -1,48 +1,41 @@
 package hotel;
 
 public class Animal {
-	
+
 	private String nome;
 	private String tipo;
 	private int idade;
-	
-	public Animal(String nome, String tipo, int idade)throws Exception{
-		if(nome.trim().isEmpty() || nome.equals(null)){
-			throw new Exception("Nome não pode ser vazio ou nulo");
+
+	public Animal(String nomeAnimal, String tipoAnimal, int idadeAnimal)
+			throws Exception {
+		if (nomeAnimal == null || nomeAnimal.trim().isEmpty()) {
+			throw new Exception("Nome de um animal nao pode ser nulo ou vazio");
 		}
-		if(tipo.trim().isEmpty() || tipo.equals(null)){
-			throw new Exception("Tipo não pode ser vazio ou nulo");
+		if (tipoAnimal == null || tipoAnimal.trim().isEmpty()) {
+			throw new Exception("Tipo de um animal nao pode ser nulo ou vazio");
 		}
-		if(idade <= 0){
-			throw new Exception("Idade não pode ser menor ou igual a zero");
+		if (idadeAnimal <= 0) {
+			throw new Exception("Idade de um animal nao pode ser abaixo de 0");
 		}
-		this.nome = nome;
-		this.tipo = tipo;
-		this.idade = idade;
+		this.nome = nomeAnimal;
+		this.tipo = tipoAnimal;
+		this.idade = idadeAnimal;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String novoNome) {
+		this.nome = novoNome;
 	}
 
 	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
 	public int getIdade() {
 		return idade;
-	}
-
-	public void setIdade(int idade) {
-		this.idade = idade;
 	}
 
 	@Override
@@ -55,23 +48,21 @@ public class Animal {
 		return result;
 	}
 
-	
-	public boolean equals(Object novoObjeto){
-		if(novoObjeto instanceof Animal){
-			Animal novoAnimal = (Animal) novoObjeto;
-			if(this.getNome().equalsIgnoreCase(novoAnimal.getNome())){
-				if(this.getTipo().equalsIgnoreCase(novoAnimal.getTipo())){
-					if(this.getIdade() == novoAnimal.getIdade()){
-						return true;
-					}
-				}
+	public boolean equals(Object Obj) {
+		if (Obj instanceof Animal) {
+			Animal outroAnimal = (Animal) Obj;
+			if (this.getNome().equalsIgnoreCase(outroAnimal.getNome())
+					&& this.getTipo().equalsIgnoreCase(outroAnimal.getTipo())) {
+				return true;
+			} else {
+				return false;
 			}
+		} else {
+			return false;
 		}
-		return false;
 	}
-	
-	public String toString(){
-		return this.getNome() + " (" + this.getIdade() +") " + this.getTipo();
+
+	public String toString() {
+		return this.getNome() + " (" + this.getIdade() + ") " + this.getTipo();
 	}
-	
 }
