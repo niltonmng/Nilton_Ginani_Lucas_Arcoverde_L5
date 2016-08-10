@@ -29,8 +29,7 @@ public class Hotel {
 	}
 	
 	public String toString(){
-		String retorno = "Hotel P2\n";
-		return retorno + this.getRecepcao().toString();
+		return this.getRecepcao().toString();
 	}
 	
 }
